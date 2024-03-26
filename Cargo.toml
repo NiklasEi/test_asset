@@ -13,5 +13,5 @@ features = [
     "bevy_asset",
     "bevy_winit",
     "png",
-    "multi-threaded",
+#    "multi-threaded",
 ]
