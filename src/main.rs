@@ -34,5 +34,11 @@ fn main() {
     app.add_plugins(DefaultPlugins)
         .init_resource::<TestAssets>()
         .add_systems(Startup, spawn_camera)
+        .add_systems(Update, check)
         .run();
+}
+
+fn check(test_assets: Res<TestAssets>, asset_server: Res<AssetServer>, images: Res<Assets<Image>>) {
+    println!("image is in asset collection: {}", images.contains(&test_assets.torch));
+    println!("AssetServer reports image in state: {:?}", asset_server.load_state(&test_assets.torch));
 }
