@@ -17,16 +17,9 @@ impl FromWorld for TestAssets {
 fn spawn_camera(
     mut commands: Commands,
     test_assets: Res<TestAssets>,
-    // asset_server: Res<AssetServer>
 ) {
-    commands.spawn(Camera2dBundle::default());
-
-    commands.spawn(SpriteBundle {
-        texture: test_assets.torch.clone(),
-        // texture: asset_server.load("torch.png"),
-        transform: Transform::from_translation(Vec3::new(0.0, 0.0, 0.)),
-        ..default()
-    });
+    commands.spawn(Camera2d::default());
+    commands.spawn(Sprite::from_image(test_assets.torch.clone()));
 }
 
 fn main() {
